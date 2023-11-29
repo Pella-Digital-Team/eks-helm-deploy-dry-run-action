@@ -42,7 +42,7 @@ fi
 # Helm upgrade
 ####################
 
-UPGRADE_COMMAND="helm template -i --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm template --timeout ${TIMEOUT}"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }; do
   UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
 done
