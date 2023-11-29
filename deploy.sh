@@ -42,7 +42,7 @@ fi
 # Helm upgrade
 ####################
 
-UPGRADE_COMMAND="helm upgrade -i --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm upgrade -i --dry-run --timeout ${TIMEOUT}"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }; do
   UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
 done
@@ -77,5 +77,3 @@ UPGRADE_COMMAND="${UPGRADE_COMMAND}"
 
 echo "Executing: ${UPGRADE_COMMAND}"
 ${UPGRADE_COMMAND}
-
-kubectl -n ${DEPLOY_NAMESPACE} rollout status deployment/${DEPLOY_NAME}
