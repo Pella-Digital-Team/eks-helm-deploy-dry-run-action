@@ -42,7 +42,7 @@ fi
 # Helm upgrade
 ####################
 
-UPGRADE_COMMAND="helm upgrade -i --dry-run --timeout ${TIMEOUT}"
+UPGRADE_COMMAND="helm upgrade -i --timeout ${TIMEOUT}"
 for config_file in ${DEPLOY_CONFIG_FILES//,/ }; do
   UPGRADE_COMMAND="${UPGRADE_COMMAND} -f ${config_file}"
 done
@@ -52,7 +52,7 @@ if [ -n "$DEPLOY_NAMESPACE" ]; then
 fi
 
 if [ -n "$DEPLOY_VALUES" ]; then
-  UPGRADE_COMMAND="${UPGRADE_COMMAND} --set ${DEPLOY_VALUES}"
+  UPGRADE_COMMAND="${UPGRADE_COMMAND} --dry-run --set ${DEPLOY_VALUES}"
 fi
 
 # Dependency Update
